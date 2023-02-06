@@ -1,0 +1,37 @@
+server:
+  port: 8070
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    topic:
+      name: user_topics2
+  application:
+    name: security
+  datasource:
+    username: postgres
+    password: Ghostblade123!
+    url: jdbc:postgresql://localhost:5432/myplanet
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  zipkin:
+    base-url: http://localhost:9411
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+    fetch-registry: true
+    register-with-eureka: true
+application:
+  jwt:
+    secretKey: secretsecretsecretsecretsecretsecretsecretsecretsecretsecret
+    tokenPrefix:  Bearer
+    tokenExpirationAfterDays: 14
