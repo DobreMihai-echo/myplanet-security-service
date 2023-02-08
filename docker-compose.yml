@@ -39,19 +39,10 @@ services:
   api-gateway:
     image: hiluminatul/apigateway:latest
     container_name: api-gateway
+    build:
+      dockerfile: ./Dockerfile
     ports:
       - "8083:8083"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - service-registry
-  security:
-    image: hiluminatul/security:latest
-    container_name: security
-    ports:
-      - "8090:8090"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
